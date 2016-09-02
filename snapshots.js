@@ -1,9 +1,10 @@
 var AWS = require('aws-sdk');
-var ec2 = new AWS.EC2();
 var deleteOn = new Date();
 
 exports.handler = function(event, context) {
-
+   AWS.config.region = event.region;
+    ec2 = new AWS.EC2();
+    console.log('AWS Region: '+AWS.config.region);
    // create snapshots --------------------------------
    var createParams = {
       Filters: [
