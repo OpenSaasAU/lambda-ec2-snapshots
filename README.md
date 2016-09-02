@@ -1,6 +1,6 @@
 # Setup Guide
 - Copy the code from either snapshots.js or snapshots.py into a new Lambda function
-- Use a similar AIM policy to allow access to EC2 tags, snapshots, etc. 
+- Use a similar IAM policy to allow access to EC2 tags, snapshots, etc. 
   **Replace `ec2-snapshots` with the name of your Lambda function**
 
 ```javascript
@@ -10,7 +10,7 @@
         {
             "Effect": "Allow",
             "Action": "logs:CreateLogGroup",
-            "Resource": "arn:aws:logs:*"
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
@@ -41,7 +41,8 @@
 ```
 
 - Set the Lambda's function Trigger to a "CloudWatch Events - Schedule". 
-  This can be set from within the Lambda function console under the "Triggers" tab 
+  This can be set from within the Lambda function console under the "Triggers" tab
+- To manually set the region. Confgiure the input of the Lambda function, set to "Constant (JOSN text)" and enter { "region" : "us-east-1" } or whatever region you want. You can then setup multiple Cloudwatch rules for different regions pointing to the same Lambda function.
 - Add the following tags to the EC2 instance(s) you want snapshots created
 
 |  Tag | Value | Description |
