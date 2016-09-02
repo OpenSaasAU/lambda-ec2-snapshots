@@ -42,11 +42,11 @@
 
 - Set the Lambda's function Trigger to a "CloudWatch Events - Schedule". 
   This can be set from within the Lambda function console under the "Triggers" tab
-- To manually set the region. Confgiure the input of the Lambda function, set to "Constant (JOSN text)" and enter 
+- To manually set the region. Confgiure the input of the Lambda function, set to "Constant (JOSN text)" and enter the region in JSON format for example:
 ```javascript
 { "region" : "us-east-1" }
 ```
-or whatever region you want. You can then setup multiple Cloudwatch rules for different regions pointing to the same Lambda function.
+- You can then setup multiple Cloudwatch rules for different regions pointing to the same Lambda function.
 - Add the following tags to the EC2 instance(s) you want snapshots created
 
 |  Tag | Value | Description |
